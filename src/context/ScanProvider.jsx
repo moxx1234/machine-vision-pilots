@@ -1,7 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react"
 import { socket } from "../api/socket"
 
-const stageDuration = 1000
+const stageDuration = 5000
 const totalStages = 4
 
 export const ScanContext = createContext()
