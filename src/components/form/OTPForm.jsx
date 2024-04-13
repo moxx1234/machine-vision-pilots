@@ -35,7 +35,7 @@ const OTPForm = () => {
 	return (
 		<AnimatePresence>
 			<motion.div
-				className="tw-flex tw-flex-col tw-flex-1 tw-items-center tw-justify-around"
+				className="tw-flex tw-flex-col tw-flex-1 tw-items-center tw-justify-center"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
@@ -47,16 +47,19 @@ const OTPForm = () => {
 				>
 					{({ handleSubmit, isSubmitting }) => {
 						return (
-							<form onSubmit={handleSubmit} className="tw-bg-gradient-to-r tw-from-[#EFF8FFB2]/70 tw-to-white/[.63] tw-py-9 tw-px-36 tw-rounded-3xl">
-								<OTPField
-									name="user_id"
-									label="Bar code"
-									description='Enter 4 digit bar code to initiate health scan'
-									otpLength={otpLength}
-									Hint={UserIdHint}
-									readonly={isSubmitting}
-								/>
-							</form>
+							<div className="tw-flex tw-flex-col tw-gap-24 tw-items-center">
+								<form onSubmit={handleSubmit} className="tw-bg-gradient-to-r tw-from-[#EFF8FFB2]/70 tw-to-white/[.63] tw-py-9 tw-px-36 tw-rounded-3xl">
+									<OTPField
+										name="user_id"
+										label="Bar code"
+										description='Enter 4 digit bar code to initiate health scan'
+										otpLength={otpLength}
+										Hint={UserIdHint}
+										readonly={isSubmitting}
+									/>
+								</form>
+								<p className="tw-text-4xl tw-font-semibold tw-uppercase tw-text-[#6A727D] tw-max-w-[68%] tw-text-center tw-leading-snug">This Digital Tactical Combat Care solution does not capture your image</p>
+							</div>
 						)
 					}}
 				</Formik>
