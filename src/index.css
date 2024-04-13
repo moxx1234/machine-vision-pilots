@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: "Inter", sans-serif;;
+}
+
+#root {
+	min-height: 100vh;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	color: #09101D;
+}
+
+.mask {
+	position: absolute;
+  width: 33.33333%;
+  height: 72%;
+  box-shadow: 0 0 0 100vw rgba(255, 255, 255, 0.6);
+  border-radius: 45%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+.column-1\/3 {
+	flex: 1 0 33.3333%;
+}
+
+.progress {
+	height: 10px;
+}
+.progress-bar {
+	background-color: #09101D !important;
+	border-radius: 50px;
+}
+
+@keyframes move{
+	0%
+	{
+		background-position: 0 center;
+	}
+	100%
+	{
+		background-position: -100% center;
+	}
+}
+
+.animation-line {
+	background-size: 50% 100%;
+	animation: move 2.5s linear infinite;
+	margin-right: -50%;
+}
+
+.confirm-button, .dismiss-button {
+	border-radius: 24px;
+}
+.confirm-button {
+	background-color: #09101D;
+	color: #fff;
+}
+.confirm-button:disabled {
+		background-color: #595968;
+	}
+.dismiss-button {
+	background-color: #D5DDE3;
+	color: #09101D;
+}
+
+#meter path:not(#outer) {
+	transition: 1s;
+}
+
+#pointer {
+	bottom: 0px;
+	overflow: visible;
+}
+
+#pointer g {
+	transition: 1s;
+	transform-origin: bottom center;
+	transform-box: fill-box;
+}
+
+#full-canvas {
+	transition: .5s linear;
+}
+
+.custom-radio {
+	position: relative;
+	padding: 12px 16px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	gap: 12px;
+	border: 1px solid #9BA7B1;
+	border-radius: 30px;
+	font-family: inherit;
+	color: #434A54;
+	font-weight: 600;
+	text-transform: uppercase;
+	transition: .3s;
+}
+
+.custom-radio input {
+	position: absolute;
+}
+
+.custom-radio input {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+
+.custom-radio span {
+	position: relative;
+	box-shadow: 0 0 0 1px inset #9BA7B1;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+}
+
+.custom-radio:has(input:checked) {
+	border-color: #09101D;
+}
+
+.custom-radio span::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .3s;
+	border-radius: 50%;
+	background-clip: border-box;
+	box-sizing: border-box;
+	background-image: url("/src/assets/icons/check-fill.svg");
+	background-size: cover;
+}
+
+.custom-radio input:checked ~ span::after {
+	opacity: 1;
+}
+
+.custom-radio:has(input:checked) {
+	color: #09101D;
+}
+
+.radio-all .custom-radio {
+	border: none;
+}
+
+#frequency-range {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	outline: none;
+	border-radius: 50px;
+}
+
+#frequency-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	background-color: #09101D;
+	border: 5px solid #fff;
+	border-radius: 50%;
+}
+
+#frequency-range::-moz-range-thumb {
+	width: 10px;
+	height: 10px;
+	background-color: #09101D;
+	border: 5px solid #fff;
+	border-radius: 50%;
+}
+
+.frequency-step {
+	position: relative;
+	padding-top: 8px;
+	width: 12px;
+	text-align: center;
+}
+
+.frequency-step::before {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 8px;
+	top: 0;
+	left: 50%;
+	background-color: #6A727D;
+}
+
+/* Vibrome scan points */
+.front-dots-list div, .back-dots-list div {
+	position: absolute;
+	transform: translateX(-50%);
+}
+/* Front side */
+.front-dots-list div:nth-child(1) {
+	top: 8%;
+	left: 58%;
+}
+.front-dots-list div:nth-child(2) {
+	top: 32%;
+	left: 63%;
+}
+.front-dots-list div:nth-child(3) {
+	top: 32%;
+	left: 36%;
+}
+.front-dots-list div:nth-child(4) {
+	top: 63%;
+	left: 35%;
+}
+.front-dots-list div:nth-child(5) {
+	top: 63%;
+	left: 66%;
+}
+.front-dots-list div:nth-child(6) {
+	top: 78%;
+	left: 50%;
+}
+
+/* Back side */
+.back-dots-list div:nth-child(1) {
+	top: 20%;
+	left: 34%;
+}
+.back-dots-list div:nth-child(2) {
+	top: 20%;
+	left: 65%;
+}
+.back-dots-list div:nth-child(3) {
+	top: 40%;
+	left: 65%;
+}
+.back-dots-list div:nth-child(4) {
+	top: 40%;
+	left: 36%;
+}
+.back-dots-list div:nth-child(5) {
+	top: 70%;
+	left: 33%;
+}
+.back-dots-list div:nth-child(6) {
+	top: 70%;
+	left: 68%;
+}
+
+.modal-content {
+	border-radius: 24px;
+}
