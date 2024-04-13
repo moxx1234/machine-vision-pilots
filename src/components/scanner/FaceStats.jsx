@@ -13,6 +13,7 @@ const FaceStats = ({ heartRate, breathRate, energyMeter, animated = false }) => 
 		else if (energyMeter > 1 && energyMeter <= 2) setEnergyText('medium')
 		else setEnergyText('low')
 	}, [energyMeter])
+
 	return (
 		<>
 			<FaceStatsItem value={heartRate} animated={animated} unit='min' name='heart rate' lineImg={cardio} />

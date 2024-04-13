@@ -5,9 +5,7 @@ const BodyField = () => {
 	return (
 		<div className='tw-flex-1 tw-flex tw-aspect-square tw-max-w-[90%] tw-mx-auto'>
 			<BodyFrontField />
-			<div className='tw-flex-1'>
-				{/* <BodyBackField /> */}
-			</div>
+			<BodyBackField />
 		</div>
 	)
 }

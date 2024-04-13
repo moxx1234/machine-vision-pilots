@@ -25,7 +25,7 @@ const MachineVision = () => {
 		setIsModalOpen(true)
 	}
 	const confirmScanAbort = () => {
-		navigate('/')
+		dispatch({ type: 'restart' })
 	}
 	const cancelScanAbort = () => {
 		setIsModalOpen(false)
@@ -35,14 +35,14 @@ const MachineVision = () => {
 		if (!finished) return
 		axios.get(`${URL}/api/scanResult`)
 			.then((response) => {
-				const { status, heart_rate, breath_rate, energy_meter } = response.data
+				const { status, heart_rate, breath_rate, health_score } = response.data
 				dispatch({
 					type: 'completeScan',
 					payload: {
 						status: status,
 						heartRate: heart_rate,
 						breathRate: breath_rate,
-						healthScore: energy_meter
+						healthScore: health_score
 					}
 				})
 			})
@@ -64,7 +64,15 @@ const MachineVision = () => {
 								exit={{ opacity: 0 }}
 								transition={{ duration: .8 }}
 							>
-								<ExitDialog isOpen={isModalOpen} onConfirmNav={confirmScanAbort} onCancelNav={cancelScanAbort} />
+								<ExitDialog
+									isOpen={isModalOpen}
+									onConfirmNav={confirmScanAbort}
+									onCancelNav={cancelScanAbort}
+									question='Are you sure you want to stop the scanning process?'
+									disclaimer='Any unsaved progress will be lost'
+									confirmText='Stop Scanning'
+									cancelText='Continue Scanning'
+								/>
 
 								{
 									!finished

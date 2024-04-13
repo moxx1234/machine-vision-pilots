@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import qrIcon from '../../assets/icons/qr.svg'
 import { UserContext } from '../../context/UserProvider'
 import IconButton from '../IconButton'
@@ -6,6 +6,7 @@ import ProcessAborter from '../ProcessAborter'
 import InjuryForm from '../injury/InjuryForm'
 import InjuryHeader from '../injury/InjuryHeader'
 import ResultStatus from './ResultStatus'
+import ExitDialog from '../ExitDialog'
 
 const colors = {
 	urgent: 'tw-bg-[rgb(236,45,48)]/15',
@@ -14,17 +15,33 @@ const colors = {
 }
 
 const ScanResult = () => {
-	const { state: { user, userInfo: { status } } } = useContext(UserContext)
+	const { state: { user, userInfo: { status } }, dispatch } = useContext(UserContext)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleAbort = () => {
-		console.log('abort')
+		setIsModalOpen(true)
 	}
 	const handleQrClick = () => {
 		console.log('qr')
 	}
 
+	const confirmRestart = () => {
+		dispatch({ type: 'restart' })
+	}
+	const cancelRestart = () => {
+		setIsModalOpen(false)
+	}
+
 	return (
 		<>
+			<ExitDialog
+				isOpen={isModalOpen}
+				onConfirmNav={confirmRestart}
+				onCancelNav={cancelRestart}
+				question='Are you sure you want to restart scanning?'
+				confirmText='Yes'
+				cancelText='No'
+			/>
 			<div className='tw-absolute tw-top-8 tw-left-0'>
 				<ProcessAborter text='Scanning Results' onClick={handleAbort} />
 			</div>
