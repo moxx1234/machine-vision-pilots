@@ -64,11 +64,11 @@ const OTPField = ({ name, otpLength, label, description, Hint, readonly }) => {
 					{otp.map((digit, index) => (
 						<input
 							key={index}
-							type="text"
+							type="number"
 							inputMode="numeric"
 							pattern="\d{1}"
 							value={digit}
-							className={`tw-w-[104px] tw-h-[109px] tw-rounded-3xl tw-bg-white tw-border tw-focus:outline-none tw-focus:border-black tw-focus:ring tw-focus:ring-[#09101D] tw-text-3xl tw-text-center tw-font-semibold tw-spin-button-none ${!!error && touched ? 'tw-border-[#EC2D30]' : 'tw-border-[#9BA7B1]'}`}
+							className={`tw-appearance-none tw-w-[104px] tw-h-[109px] tw-rounded-3xl tw-bg-white tw-border tw-focus:outline-none tw-focus:border-black tw-focus:ring tw-focus:ring-[#09101D] tw-text-3xl tw-text-center tw-font-semibold tw-spin-button-none ${!!error && touched ? 'tw-border-[#EC2D30]' : 'tw-border-[#9BA7B1]'}`}
 							onChange={(e) => handleChange(e, index)}
 							onFocus={() => setIsFocused(true)}
 							readOnly={readonly}

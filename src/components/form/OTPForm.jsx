@@ -51,7 +51,7 @@ const OTPForm = () => {
 								<form onSubmit={handleSubmit} className="tw-bg-gradient-to-r tw-from-[#EFF8FFB2]/70 tw-to-white/[.63] tw-py-9 tw-px-36 tw-rounded-3xl">
 									<OTPField
 										name="user_id"
-										label="Bar code"
+										label="Barcode"
 										description='Enter 4 digit bar code to initiate health scan'
 										otpLength={otpLength}
 										Hint={UserIdHint}

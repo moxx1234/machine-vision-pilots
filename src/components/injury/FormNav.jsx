@@ -23,14 +23,14 @@ const FormNav = ({ formType, onTabChoose, activeTab }) => {
 	return (
 		<nav className='tw-flex tw-gap-4'>
 			{navigation.map((button, index) => (
-				<button
+				<a
 					key={index}
 					className={`${activeTab === index ? buttonStyles.active : buttonStyles.inactive} tw-uppercase tw-transition-all tw-flex tw-flex-col tw-justify-between tw-flex-1 tw-p-4 tw-items-center tw-gap-3 tw-rounded-2xl`}
 					onClick={() => onTabChoose(index)}
 				>
 					<img src={button.image} alt={`${button.text} image`} className='tw-flex-1 tw-object-contain tw-aspect-[110/85]' />
 					<p>{button.text}</p>
-				</button>
+				</a>
 			))}
 		</nav>
 	)

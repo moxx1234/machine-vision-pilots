@@ -11,15 +11,17 @@ const initialState = {
 		healthScore: null,
 	},
 	complaintAreas: {
-		head: {},
-		body: {},
+		head: [],
+		body: []
 	},
+	injurySubmitted: false
 }
 
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'identify': return { ...state, user: action.payload }
 		case 'complaint': return { ...state, complaintAreas: action.payload }
+		case 'submitInjuries': return { ...state, injurySubmitted: true }
 		case 'completeScan': return { ...state, userInfo: action.payload }
 		case 'restart': return { ...initialState }
 		default: throw new Error('unknown user context action')

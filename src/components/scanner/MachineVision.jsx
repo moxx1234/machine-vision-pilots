@@ -1,16 +1,15 @@
+import axios from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useContext, useEffect, useState } from 'react'
 import eye from '../../assets/icons/see.svg'
 import { ScanContext } from '../../context/ScanProvider'
+import { UserContext } from '../../context/UserProvider'
 import ExitDialog from '../ExitDialog'
 import Header from '../Header'
 import Loader from '../Loader'
-import Result from '../Result'
+import ScanResult from './ScanResult'
 import VideoRenderer from './VideoRenderer'
 import VisualScanner from './VisualScanner'
-import ScanResult from './ScanResult'
-import axios from 'axios'
-import { UserContext } from '../../context/UserProvider'
 
 const URL = import.meta.env.VITE_BACKEND_URL
 
@@ -78,7 +77,7 @@ const MachineVision = () => {
 									!finished
 										? (
 											<>
-												<Header process='machine vision' abort={handleScanAbort} />
+												<Header process='Q' abort={handleScanAbort} />
 												<div className='mask'></div>
 												{data && <VisualScanner />}
 											</>
