@@ -64,7 +64,7 @@ const OTPField = ({ name, otpLength, label, description, Hint, readonly }) => {
 					{otp.map((digit, index) => (
 						<input
 							key={index}
-							type="number"
+							type="text"
 							inputMode="numeric"
 							pattern="\d{1}"
 							value={digit}
